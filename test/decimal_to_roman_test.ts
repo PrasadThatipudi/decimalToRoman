@@ -1,6 +1,16 @@
 import { decimalToRoman } from "../src/decimal_to_roman.ts";
-import { assertEquals } from "@std/assert";
+import { assertEquals, assertThrows } from "@std/assert";
 import { describe, it } from "@std/testing/bdd";
+
+describe("Exception cases", () => {
+  it("number is 0 | should throw 'Invalid Number'", () => {
+    assertThrows(() => decimalToRoman(0), "Invalid Number");
+  });
+
+  it("number is negative | should throw 'Invalid Number'", () => {
+    assertThrows(() => decimalToRoman(-1), "Invalid Number");
+  });
+});
 
 describe("1-10", () => {
   it("number is 1 | result should be 'I'", () => {

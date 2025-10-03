@@ -1,4 +1,4 @@
-const nearestStandardNumber = (number: number): [number, string] | null => {
+const nearestStandardNumber = (number: number): [number, string] => {
   const standardNumbers: [number, string, number][] = [
     [1, "I", 3],
     [5, "V", 8],
@@ -9,28 +9,22 @@ const nearestStandardNumber = (number: number): [number, string] | null => {
     [1000, "M", Infinity],
   ];
 
-  for (const [standardNumber, symbol, limit] of standardNumbers) {
-    if (number <= limit) return [standardNumber, symbol];
-  }
-
-  return null;
+  return standardNumbers
+    .find(([, , maxRange]) => number <= maxRange)!
+    .slice(0, 2) as [number, string];
 };
 
 const decimalToRoman = (decimalNumber: number): string => {
-  const standardNumberSet = nearestStandardNumber(decimalNumber);
+  if (decimalNumber <= 0) throw new Error("Invalid Number");
 
-  if (!standardNumberSet) throw "Invalid Number";
+  const [standardNumber, symbol] = nearestStandardNumber(decimalNumber);
 
-  const [standardNumber, symbol] = standardNumberSet;
+  if (decimalNumber === standardNumber) return symbol;
 
   if (decimalNumber < standardNumber)
     return decimalToRoman(standardNumber - decimalNumber) + symbol;
 
-  if (decimalNumber === standardNumber) return symbol;
-
-  const remainingNumber = decimalNumber - standardNumber;
-
-  return symbol + decimalToRoman(remainingNumber);
+  return symbol + decimalToRoman(decimalNumber - standardNumber);
 };
 
 export { decimalToRoman };
