@@ -176,8 +176,38 @@ describe("31-39", () => {
   });
 });
 
-describe("40", () => {
+describe("Standard Notation", () => {
+  it("number is 50 | result should be 'L'", () => {
+    assertEquals(decimalToRoman(50), "L");
+  });
+
+  it("number is 100 | result should be 'C'", () => {
+    assertEquals(decimalToRoman(100), "C");
+  });
+
+  it("number is 500 | result should be 'D'", () => {
+    assertEquals(decimalToRoman(500), "D");
+  });
+
+  it("number is 1000 | result should be 'M'", () => {
+    assertEquals(decimalToRoman(1000), "M");
+  });
+});
+
+describe("Subtractive Notation", () => {
   it("number is 40 | result should be 'XL'", () => {
     assertEquals(decimalToRoman(40), "XL");
+  });
+
+  it("number is 90 | result should be 'XC'", () => {
+    assertEquals(decimalToRoman(90), "XC");
+  });
+
+  it("number is 400 | result should be 'CD'", () => {
+    assertEquals(decimalToRoman(400), "CD");
+  });
+
+  it("number is 900 | result should be 'CM'", () => {
+    assertEquals(decimalToRoman(900), "CM");
   });
 });
