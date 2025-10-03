@@ -1,11 +1,15 @@
 const nearestStandardNumber = (number: number): [number, string] | null => {
-  const standardNumbers: [number, number, string][] = [
-    [1, 3, "I"],
-    [5, 8, "V"],
-    [10, 30, "X"],
+  const standardNumbers: [number, string, number][] = [
+    [1, "I", 3],
+    [5, "V", 8],
+    [10, "X", 39],
+    [50, "L", 89],
+    [100, "C", 399],
+    [500, "D", 899],
+    [1000, "M", Infinity],
   ];
 
-  for (const [standardNumber, limit, symbol] of standardNumbers) {
+  for (const [standardNumber, symbol, limit] of standardNumbers) {
     if (number <= limit) return [standardNumber, symbol];
   }
 
