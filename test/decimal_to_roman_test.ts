@@ -39,7 +39,7 @@ describe("1-10", () => {
     assertEquals(decimalToRoman(9), "IX");
   });
 
-  // it("number is 10 | result should be 'X'", () => {
-  //   assertEquals(decimalToRoman(10), "X");
-  // });
+  it("number is 10 | result should be 'X'", () => {
+    assertEquals(decimalToRoman(10), "X");
+  });
 });
